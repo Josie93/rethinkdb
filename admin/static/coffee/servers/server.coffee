@@ -239,11 +239,18 @@ module 'ServerView', ->
 
             @$el.html @template
                 main_ip: @model.get('network').hostname
+                tags: @model.get('tags')
+                tag_count: @model.get('tags').length
                 uptime: uptime
                 version: version
                 num_shards: @collection.length
                 status: @model.get('status')
                 last_seen: last_seen
+                system_db: system_db
+            @$('.tag-row .tags, .tag-row .admonition').tooltip
+                for_dataexplorer: false
+                trigger: 'hover'
+                placement: 'bottom'
             @
 
         remove: =>
